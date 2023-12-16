@@ -1,0 +1,31 @@
+.btn1{
+    /* 0B5ED7 */
+    height: 5.5vh;
+    width: 75%;
+    border: none;
+    background-color: #0B5ED7;
+    border-radius: 10px;
+    color: white;
+}
+.btn1:hover{
+    background-color: #0066ff00;
+    border: 1px solid black;
+    color: black;
+}
+
+
+.btn2{
+    /* 0B5ED7 */
+    margin-left: 170px;
+    height: 5.5vh;
+    width: 75%;
+    border: none;
+    background-color: #0B5ED7;
+    border-radius: 10px;
+    color: white;
+}
+.btn2:hover{
+    background-color: #0066ff00;
+    border: 1px solid black;
+    color: black;
+}
