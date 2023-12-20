@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { customerLogin } from '../Services/api';
+import { GoogleLogin } from '@react-oauth/google';
 import '../Component2/Login.css';
 import { Context } from '../Components/Context';
 function Login(){
@@ -51,6 +52,20 @@ function Login(){
               <span class="sign-up-link">Sign up</span>
             </Link>
           </p>
+
+
+          <GoogleLogin
+            onSuccess={credentialResponse => {
+            console.log(credentialResponse);
+            }}
+            onError={() => {
+            console.log('Login Failed');
+            }}
+          />;
+
+
+
+
         </div>
       </div>
     </div>
