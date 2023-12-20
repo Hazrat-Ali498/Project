@@ -46,10 +46,10 @@ function Login(){
             <input type="password" name='Password' class="input" placeholder="Password" onChange={handleInputChannge}/>
             <button class="form-btn" onClick={handleLogin}>Log in</button>
           </form>
-          <p class="sign-up-label">
+          <p class="sign-up-label" style={{marginBottom:"10px"}}>
             Don't have an account?
             <Link to='/Registration'>
-              <span class="sign-up-link">Sign up</span>
+              <span class="sign-up-link"> Sign up</span>
             </Link>
           </p>
 
