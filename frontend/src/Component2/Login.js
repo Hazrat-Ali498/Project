@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { customerLogin } from '../Services/api';
-// import '../Component2/Login.css';
+import '../Component2/Login.css';
 import { Context } from '../Components/Context';
 function Login(){
   const { setCustomerData, setIsLogin } = useContext(Context);
