@@ -55,16 +55,12 @@ function Registration(){
 
     try {
 
-
-
             // Email validation
             if (!isEmailValid(Email)) {
               alert('Please enter a valid email address.');
               return;
             }
       
-
-
 
       if (Password.length < 6) {
         alert('Password must be at least 6 characters long.');
@@ -103,7 +99,7 @@ function Registration(){
               <input type={showPassword ? 'text' : 'password'} name="Confirmpass" value={Confirmpass} onChange={handleInputChange} class="input" placeholder="Confirm Password"/>
 
               <label>
-              <input type="checkbox" checked={showPassword} onChange={togglePasswordVisibility} className="password-toggle-checkbox" />
+              <input type="checkbox"style={{width:"20%"}} checked={showPassword} onChange={togglePasswordVisibility} className="password-toggle-checkbox" />
               Show Password
             </label>
 
