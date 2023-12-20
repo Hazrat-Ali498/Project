@@ -27,7 +27,7 @@
   
   .input {
     border-radius: 20px;
-    border: 1px solid #c0c0c0;
+    border: 5px solid red;
     outline: 0 !important;
     box-sizing: border-box;
     padding: 12px 15px;
