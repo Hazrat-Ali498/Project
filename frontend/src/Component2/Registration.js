@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { addLogindata } from '../Services/api';
 import '../Component2/Login.css';
+import '../Component2/Login.css';
 function Registration(){
 
 
@@ -102,7 +103,7 @@ function Registration(){
               <input type={showPassword ? 'text' : 'password'} name="Confirmpass" value={Confirmpass} onChange={handleInputChange} class="input" placeholder="Confirm Password"/>
 
               <label>
-              <input type="checkbox" style={{fontSize:"10px"}} checked={showPassword} onChange={togglePasswordVisibility} className="password-toggle-checkbox" />
+              <input type="checkbox" checked={showPassword} onChange={togglePasswordVisibility} className="password-toggle-checkbox" />
               Show Password
             </label>
 
