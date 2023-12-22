@@ -1,9 +1,17 @@
 import { useState, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { customerLogin } from '../Services/api';
-import { GoogleLogin } from '@react-oauth/google';
 import '../Component2/Login.css';
 import { Context } from '../Components/Context';
+
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+
+
+
 function Login(){
   const { setCustomerData, setIsLogin } = useContext(Context);
 
@@ -13,6 +21,7 @@ function Login(){
   } );
 
   const navigation = useNavigate();
+  const navigate = useNavigate();
 
   const handleInputChannge = (e) => {
     setLoginCridentials({...lognCridentials, [e.target.name]: e.target.value});
@@ -23,18 +32,50 @@ function Login(){
     try {
       const response = await customerLogin(lognCridentials);
       const customer = response.data;
-      console.log('Data is:', customer.customerData);
-      if(customer.message === true){
+  
+      if (customer.message === true) {
         setCustomerData(customer.customerData);
         setIsLogin(true);
-        navigation('/');
-      } else {
-        console.log('User does not exit...');
-      }
+  
+        const token = customer.token;
+        localStorage.setItem('token', token);
+        if (token) {
+          setAuthToken(token); // Function to set token in Axios headers
+          }
+      } 
+ 
+
+        if (response.data.Email) {
+          localStorage.setItem('adminEmail', response.data.Email);
+    
+          navigation('/Admin');
+        } else {
+          navigation('/');
+        }
+        console.log(response.data.customerData.Email);
+        localStorage.setItem('loggedUser', response.data.customerData.Email);
+      
     } catch (error) {
-      console.log("Can not login", error);
+      console.log("Cannot login", error);
     }
-  }
+  };
+  
+
+  const setAuthToken = (token) => {
+    if (token) {
+      // Apply the token to every request header
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    } else {
+      // If the token is not present, remove it from headers
+      delete axios.defaults.headers.common['Authorization'];
+    }
+    };
+
+
+
+
+
+
     return(
     
     <div>
@@ -55,13 +96,16 @@ function Login(){
 
 
           <GoogleLogin
-            onSuccess={credentialResponse => {
-            console.log(credentialResponse);
-            }}
-            onError={() => {
-            console.log('Login Failed');
-            }}
-          />;
+              onSuccess={(credentialResponse) => {
+                console.log(credentialResponse);
+                const decoded = jwtDecode(credentialResponse.credential);
+                console.log(decoded);
+                navigate("/");
+              }}
+              onError={() => {
+                console.log('Login Failed');
+              }}
+            />
 
 
 

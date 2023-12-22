@@ -1,7 +1,8 @@
 import axios from "axios";
 
 
-const url= "https://mydata-v5td.onrender.com";
+// const url= "https://mydata-v5td.onrender.com";
+const url="http://localhost:5000";
 
 export const addProduct=async(formdata)=>{
     return await axios.post(`${url}/Add_Form`,formdata);

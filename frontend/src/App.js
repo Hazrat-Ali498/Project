@@ -20,6 +20,7 @@ import Contact from "./Components/Contact";
 import Login from "./Component2/Login";
 import Registration from "./Component2/Registration";
 import CustomerDetails from "./Component2/Customer";
+import PrivateRoute from "./Components/PrivateRouter";
 
 function App() {
   const location = useLocation();
@@ -39,7 +40,11 @@ function App() {
         <Route path="/For-Kids" element={<Kids />} />
         <Route path="/Contact-us" element={<Contact/>} />
         {/* <Route path="/AdminPage" element={<Admin />} /> */}
-        <Route path="/Admin" element={<Admin/>}/>
+        
+        <Route element={<PrivateRoute />}>
+        <Route path="/Admin" element={<Admin />}/>
+        </Route>
+
         <Route path="/Tops" element={<Top/>}/>
         <Route path="/Kurta" element={<Kurta/>}/>
         <Route path="/WomenFusion" element={<WomenFusion/>}/>
@@ -54,3 +59,5 @@ function App() {
 }
 
 export default App;
+
+
